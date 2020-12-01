@@ -2,5 +2,5 @@
 IsNu := function(NuSeq)
   local s;
   s:=SemigroupFromNu(NuSeq);
-  return (NuSeq=NuSequence(s));
+  return (NuSequence(s)<=nuSeq);
 end;
