@@ -22,12 +22,13 @@ SemigroupFromTau := function(TauSeq)
   g:=k-2*TauSeq[k]-1;
 
   #Now, we compute the semigrup.
-  #We need initialize it to a list of lenght c-g
+  #We need initialize it to a list of lenght l
   S:=[];
-  for i in [1..(c-g)] do Add(S,0); od;
-  for i in [c-g+1..l] do Add(S,i+g-1); od;
-  Add(S,c);
+  for i in [1..(c-g)] do Add(S,0); od; #The first values don't matter now, but will matter later
+  for i in [(c-g)..l] do Add(S,i+g); od; #The values after the conductor are tivial
+
   for i in Reversed([2..c-g]) do
+    #Follow the procedure, as outlined in the proof by Maria Brass
     aux:=Positions(TauSeq,i-1);
     min:=1;
     for j in [1..Length(aux)] do

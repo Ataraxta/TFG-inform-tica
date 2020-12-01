@@ -16,7 +16,7 @@ SemigroupFromNu := function(NuSeq)
     od;
   fi;
   if not isNu then
-    Print("Not a valid Nu sequence\n");
+    Error("Not a valid Nu sequence.");
     return fail;
   else
   #We compute numerical semigroup from NuSeq.
@@ -52,14 +52,13 @@ SemigroupFromNu := function(NuSeq)
 
     for i in Reversed([2..(c-1)]) do
       if NuSeq[c+i-g]=(c+i-2*g+DTilde(i,c,G)) then
-        Add(S,i);
+        Add(S,i,1);
       else
         Add(G,i);
       fi;
     od;
     #Now, we determine small elements of the semigroup.
-    Add(S,0); # O is always n the semigroup.
-    Sort(S);
+    Add(S,0,1); # O is always n the semigroup.
     Add(S,c); # Conductor is always n the semigroup.
     return NumericalSemigroupBySmallElements(S);
   fi;

@@ -3,5 +3,9 @@
 Nu := function(i,S)
   local d;
   d:=DivisorsOfElementInNumericalSemigroup(S[i],S);
-  return Length(d);
+  if d=[] then
+     return 1;
+  else
+    return Length(d);
+  fi;
 end;

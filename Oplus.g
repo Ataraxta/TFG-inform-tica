@@ -6,6 +6,6 @@
 Oplus := function(i,j,S)
   local s, k;
   s:=S[i]+S[j];
-  k:=IndexOfElement(s,S);
+  k:=NumberElement_NumericalSemigroup(S,s);
   return k;
 end;
