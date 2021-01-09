@@ -1,3 +1,6 @@
+#Takes, I, a proper ideal of S, a numerical semigroup.
+#Outputs a list of irreductible proper ideals whose intesection is I
+#Requieres IdealByDivisorClosedSet.
 ProperIdealDecomposition := function(I,S)
   local M,Dif, XI,output,x,d;
   M:=MaximalIdeal(S);
@@ -6,7 +9,7 @@ ProperIdealDecomposition := function(I,S)
   output:=[];
   for x in XI do
     d:=DivisorsOfElementInNumericalSemigroup(x,S);
-    Add(output,d);
+    Add(output,IdealByDivisorClosedSet(d,S));
   od;
   return output;
 end;
