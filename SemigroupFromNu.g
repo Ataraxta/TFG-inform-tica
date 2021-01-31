@@ -1,3 +1,15 @@
+# Computes the numerical semigroup whose nu Sequence is the imput sequence.   #
+# Imput NuSequence must contain elements at least n[1]..nu[2*Conductor-Genus] #
+###############################################################################
+# This algorithm is based on theoreom 54 of the article:                      #
+# Numerical Semigroups and Codes                                              #
+# Chapter 5 of Algebraic Geometry Modeling in Information Theory              #
+# E. Martinez-Moro (ed.), World Scientific, 2013.                             #
+# Written by:                                                                 #
+# Maria Bras-Amorós                                                           #
+# Published in:                                                               #
+# IEEE Transactions on information theory, 2013                               #
+###############################################################################
 #Given a Nu sequence, compute the semigroup asociated to it.
 SemigroupFromNu := function(NuSeq)
   local isNu, i, l, S, g, c, k, G, DTilde;
@@ -41,17 +53,17 @@ SemigroupFromNu := function(NuSeq)
     #c-1+i-l is also a Gap
     DTilde:=function(i,c,G)
       local l, D;
-      D:=0;
-      for l in [(i+1)..(c-3)] do
+      D:=[] ;
+      for l in [(i+1)..(c-2)] do
         if l in G then
-          if (c+i-l-1) in G then D:=D+1; fi;
+          if (c+i-l-1) in G then Add(D,l); fi;
         fi;
       od;
       return D;
     end;
 
     for i in Reversed([2..(c-1)]) do
-      if NuSeq[c+i-g]=(c+i-2*g+DTilde(i,c,G)) then
+      if NuSeq[c+i-g]=( c+i-2*g+Length(DTilde(i,c,G)) ) then
         Add(S,i,1);
       else
         Add(G,i);
