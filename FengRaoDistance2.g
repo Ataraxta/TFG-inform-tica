@@ -155,14 +155,18 @@ FengRaoDistance2 := function(s,r,m)
   ###############################################################################
 
   FengRaoDistanceTwoGenerators := function(S,m)
-    local conductor, genus, L, i;
+    local conductor, genus, ro, p, min, L;
     # We use the formula fr:=min{ρ_k ∈ S | ρ_k ≥ m + 2 - 2g}, for m≥c.
     conductor:=Conductor(S);
     genus:=Genus(S);
-    L:=ElementsUpTo(s,2*conductor);
-    i:=Position(L,conductor);
-    L:=L{[i..2*conductor+1-genus]};
-    return Minimum(L);
+    L:=ElementsUpTo(S,2*conductor);
+    min:=4*conductor;
+    for ro in L do
+      if ro >= m+1-2*genus and min>(ro+m+1-2*genus) then
+        min:=ro;
+      fi;
+    od;
+    return min;
   end;
 
   #Computes the generalized r-th Feng-Rao distance for m in the semigrup such that

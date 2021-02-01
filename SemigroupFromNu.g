@@ -53,17 +53,17 @@ SemigroupFromNu := function(NuSeq)
     #c-1+i-l is also a Gap
     DTilde:=function(i,c,G)
       local l, D;
-      D:=[] ;
+      D:=0;
       for l in [(i+1)..(c-2)] do
         if l in G then
-          if (c+i-l-1) in G then Add(D,l); fi;
+          if (c+i-l-1) in G then D:=D+1; fi;
         fi;
       od;
       return D;
     end;
 
     for i in Reversed([2..(c-1)]) do
-      if NuSeq[c+i-g]=( c+i-2*g+Length(DTilde(i,c,G)) ) then
+      if NuSeq[c+i-g]=(c+i-2*g+DTilde(i,c,G)) then
         Add(S,i,1);
       else
         Add(G,i);
