@@ -9,7 +9,9 @@
 # Theorem 9                                                 #
 #############################################################
 FengRaoDistanceSymmetricGeneralized := function(s,r,m)
+  local g;
+  g:=Genus(s);
   if (m-2*g+1) in s then
     return m+1-2*g+FengRaoNumber(r,s);
   fi;
-end
+end;
