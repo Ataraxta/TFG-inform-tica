@@ -8,11 +8,18 @@ TestFengRaoDistanceArf2 := function(S)
       bool:=(FengRaoDistance(S,2,S[i])=FengRaoDistanceArf2(S,S[i]));
       Print(bool);
       Print("\t");
+      Print("&");
+      Print("\t");
       Print(S[i]);
+      Print("\t");
+      Print("&");
       Print("\t");
       Print(FengRaoDistance(S,2,S[i]));
       Print("\t");
+      Print("&");
+      Print("\t");
       Print(FengRaoDistanceArf2(S,S[i]));
+      Print("\\\\ \\hline");
       Print("\n");
       i:=i+1;
     od;

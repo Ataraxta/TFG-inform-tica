@@ -13,6 +13,6 @@ FengRaoDistanceOrdinary2 := function(s,m)
   local e, c;
   e:=Multiplicity(s);
   c:=Conductor(s);
-  if c<=m and m<=2*e-1 then return 3; fi;
+  if c<=m and m<2*e-1 then return 3; fi;
   return m - (2*e - 1) + 4;
 end;

@@ -198,7 +198,7 @@ FengRaoDistance2 := function(s,r,m)
     local e, c;
     e:=Multiplicity(s);
     c:=Conductor(s);
-    if c<=m and m<=2*e-1 then return 3; fi;
+    if c<=m and m<2*e-1 then return 3; fi;
     return m - (2*e - 1) + 4;
   end;
 
@@ -394,11 +394,11 @@ FengRaoDistance2 := function(s,r,m)
 
   #Classical (r=1)
   if r=1 then
-    if HasIsArf(s) then
+    if HasIsArf(s) and IsArf(s) then
       return FengRaoDistanceArf(s,m);
     fi;
 
-    if HasIsSymmetric(s) and m>=conductor then
+    if HasIsSymmetric(s) and IsSymmetric(s) and m>=conductor then
       return FengRaoDistanceSymmetric(s,m);
     fi;
 
@@ -413,11 +413,11 @@ FengRaoDistance2 := function(s,r,m)
   #Generalized, r=2
   if r=2 then
 
-    if HasIsOrdinary(s) and r=2 and m>=conductor then
+    if HasIsOrdinary(s) and IsOrdinary(s) and r=2 and m>=conductor then
       return FengRaoDistanceOrdinary2(s,m);
     fi;
 
-    if HasIsArf(s) then
+    if HasIsArf(s) and IsArf(s) then
       return FengRaoDistanceArf2(s,m);
     fi;
 
