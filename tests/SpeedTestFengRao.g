@@ -13,7 +13,7 @@ SpeedTestFengRao := function(s,r,limInf,limSup,verbose,iter)
     Add(averageA,0);
     Add(averageB,0);
     for i in [limInf..limSup] do
-      if i in S then
+      if i in s then
         a:=NanosecondsSinceEpoch();
         FengRaoDistance(s,r,i);
         b:=NanosecondsSinceEpoch();
